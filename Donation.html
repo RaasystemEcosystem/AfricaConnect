@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate | AfricaConnect Foundation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <main class="max-w-3xl mx-auto py-20 px-6">
+    <h1 class="text-4xl font-bold mb-8 text-center text-green-800">Support Our Mission</h1>
+    <p class="text-lg text-center mb-10">
+      Your donation helps reconnect Africa with its global diaspora through heritage, empowerment, and opportunity.
+    </p>
+
+    <form class="bg-white p-8 rounded-2xl shadow-md space-y-6">
+      <!-- Name & Email -->
+      <div>
+        <label class="block mb-1 font-semibold">Full Name</label>
+        <input type="text" required class="w-full border border-gray-300 rounded-md p-3" placeholder="Jane Doe" />
+      </div>
+      <div>
+        <label class="block mb-1 font-semibold">Email Address</label>
+        <input type="email" required class="w-full border border-gray-300 rounded-md p-3" placeholder="you@example.com" />
+      </div>
+
+      <!-- Amount -->
+      <div>
+        <label class="block mb-1 font-semibold">Donation Amount (USD)</label>
+        <div class="grid grid-cols-4 gap-2 mb-3">
+          <button type="button" class="amount-btn bg-emerald-600 text-white font-semibold py-2 rounded-md hover:bg-emerald-700" data-amount="10">$10</button>
+          <button type="button" class="amount-btn bg-emerald-600 text-white font-semibold py-2 rounded-md hover:bg-emerald-700" data-amount="25">$25</button>
+          <button type="button" class="amount-btn bg-emerald-600 text-white font-semibold py-2 rounded-md hover:bg-emerald-700" data-amount="50">$50</button>
+          <button type="button" class="amount-btn bg-emerald-600 text-white font-semibold py-2 rounded-md hover:bg-emerald-700" data-amount="100">$100</button>
+        </div>
+        <input id="customAmount" type="number" min="1" step="1" placeholder="Or enter custom amount" class="w-full border border-gray-300 rounded-md p-3" />
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label class="block mb-1 font-semibold">Leave a message (optional)</label>
+        <textarea rows="4" class="w-full border border-gray-300 rounded-md p-3" placeholder="Your message..."></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="space-y-4">
+        <!-- Stripe Checkout -->
+        <button type="button" onclick="window.location.href='https://buy.stripe.com/test_4gw5mD8Gv9DtdXidQQ'" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 rounded-md shadow-lg transition">
+          Donate with Card (Stripe)
+        </button>
+
+        <!-- PayPal -->
+        <div class="text-center">
+          <p class="text-sm mb-2 text-gray-600">or donate with</p>
+          <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID" target="_blank">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/donate-logo-large.png" class="mx-auto w-48" alt="Donate with PayPal" />
+          </a>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const amountButtons = document.querySelectorAll('.amount-btn');
+    const customAmountInput = document.getElementById('customAmount');
+
+    amountButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        customAmountInput.value = btn.dataset.amount;
+      });
+    });
+  </script>
+</body>
+</html>
